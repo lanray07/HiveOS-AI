@@ -88,6 +88,7 @@ struct HiveDetailView: View {
                     }
                     TextField("Honey production estimate", value: $hive.honeyProductionEstimate, format: .number)
                     TextField("Notes", text: $hive.notes, axis: .vertical)
+                    VoiceInputPanel(text: $hive.notes, title: "Voice Hive Notes")
                 }
 
                 SectionPanel(title: "Inspection History") {
@@ -133,6 +134,7 @@ struct AddApiaryView: View {
                 TextField("Location", text: $location)
                 TextField("Climate region", text: $climateRegion)
                 TextField("Notes", text: $notes, axis: .vertical)
+                VoiceInputPanel(text: $notes, title: "Voice Apiary Notes")
             }
             .navigationTitle("Add Apiary")
             .toolbar {
@@ -211,7 +213,8 @@ struct NewInspectionView: View {
                     }
                 }
                 TextField("Notes", text: $notes, axis: .vertical)
-                Text("Voice notes placeholder available in audio module. Photos can be added through AI Hive Scan.")
+                VoiceInputPanel(text: $notes, title: "Voice Inspection Notes")
+                Text("Photos can be added through AI Hive Scan. Voice input creates editable text notes from speech recognition.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

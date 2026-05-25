@@ -19,6 +19,8 @@ Open `HiveOSAI.xcodeproj` in Xcode 15 or newer and run the `HiveOSAI` target on 
 - WidgetKit and Apple Watch placeholder screens
 - Agricultural disclaimer language throughout
 - In-app multilingual layer for English, Spanish, French, German, Italian, and Portuguese
+- Voice input for editable inspection, hive, apiary, and swarm sighting notes
+- Swarm Alert Network for locally reporting swarm sightings and notifying nearby beekeepers with local notification scaffolding
 
 ## Backend Placeholder
 

@@ -264,3 +264,76 @@ struct EmptyStateView: View {
         .background(.black.opacity(0.38), in: RoundedRectangle(cornerRadius: 8))
     }
 }
+
+struct VoiceInputPanel: View {
+    @Binding var text: String
+    let title: String
+    @State private var voiceInput = VoiceInputService()
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Label(title, systemImage: voiceInput.isRecording ? "waveform.circle.fill" : "mic.circle.fill")
+                    .font(.subheadline.bold())
+                    .foregroundStyle(voiceInput.isRecording ? .red : .orange)
+                Spacer()
+                Button {
+                    Task {
+                        if voiceInput.isRecording {
+                            voiceInput.stop()
+                        } else {
+                            await voiceInput.start()
+                        }
+                    }
+                } label: {
+                    Image(systemName: voiceInput.isRecording ? "stop.fill" : "mic.fill")
+                        .frame(width: 34, height: 34)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(voiceInput.isRecording ? .red : .orange)
+                .accessibilityLabel(voiceInput.isRecording ? "Stop voice input" : "Start voice input")
+            }
+
+            if voiceInput.isRecording {
+                Text("Listening...")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            if !voiceInput.transcript.isEmpty {
+                Text(voiceInput.transcript)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .padding(10)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.white.opacity(0.06), in: RoundedRectangle(cornerRadius: 8))
+
+                Button {
+                    appendTranscript()
+                } label: {
+                    Label("Add Transcript to Notes", systemImage: "text.badge.plus")
+                }
+                .buttonStyle(.bordered)
+                .tint(.orange)
+            }
+
+            if let errorMessage = voiceInput.errorMessage {
+                Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+            }
+        }
+        .padding(12)
+        .background(.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 8))
+    }
+
+    private func appendTranscript() {
+        let trimmed = voiceInput.transcript.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            text = trimmed
+        } else {
+            text += "\n\(trimmed)"
+        }
+    }
+}

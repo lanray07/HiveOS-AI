@@ -17,7 +17,8 @@ struct HiveOSAIApp: App {
             HiveAudioRecord.self,
             HivePulse.self,
             HiveReport.self,
-            SubscriptionState.self
+            SubscriptionState.self,
+            SwarmSighting.self
         ])
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

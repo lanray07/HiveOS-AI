@@ -1,6 +1,7 @@
 import AVFoundation
 import Foundation
 import PhotosUI
+import Speech
 import StoreKit
 import SwiftUI
 import UIKit
@@ -74,6 +75,16 @@ final class NotificationService {
         content.sound = .default
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+
+    func scheduleSwarmAlert(for sighting: SwarmSighting) {
+        let content = UNMutableNotificationContent()
+        content.title = "Swarm spotted nearby"
+        content.body = "\(sighting.locationDescription). Size: \(sighting.estimatedClusterSize). Verify safely before taking action."
+        content.sound = .default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "swarm-\(sighting.id.uuidString)", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
 }
@@ -163,5 +174,97 @@ final class AudioRecorderPlaceholder {
         if !isRecording {
             currentPlaceholder = "hive-audio-\(Int(Date().timeIntervalSince1970)).m4a"
         }
+    }
+}
+
+@Observable
+@MainActor
+final class VoiceInputService {
+    var isRecording = false
+    var transcript = ""
+    var errorMessage: String?
+
+    @ObservationIgnored private let recognizer = SFSpeechRecognizer(locale: Locale(identifier: "en_GB"))
+    @ObservationIgnored private let audioEngine = AVAudioEngine()
+    @ObservationIgnored private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    @ObservationIgnored private var recognitionTask: SFSpeechRecognitionTask?
+
+    func start() async {
+        errorMessage = nil
+        transcript = ""
+
+        guard await requestPermissions() else {
+            errorMessage = "Voice input needs microphone and speech recognition permission."
+            return
+        }
+
+        recognitionTask?.cancel()
+        recognitionTask = nil
+
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+
+            let request = SFSpeechAudioBufferRecognitionRequest()
+            request.shouldReportPartialResults = true
+            recognitionRequest = request
+
+            let inputNode = audioEngine.inputNode
+            let recordingFormat = inputNode.outputFormat(forBus: 0)
+            inputNode.removeTap(onBus: 0)
+            inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { [weak request] buffer, _ in
+                request?.append(buffer)
+            }
+
+            audioEngine.prepare()
+            try audioEngine.start()
+            isRecording = true
+
+            recognitionTask = recognizer?.recognitionTask(with: request) { [weak self] result, error in
+                Task { @MainActor in
+                    if let result {
+                        self?.transcript = result.bestTranscription.formattedString
+                    }
+                    if error != nil || result?.isFinal == true {
+                        self?.stop(appendFinalBuffer: false)
+                    }
+                }
+            }
+        } catch {
+            errorMessage = "Voice input could not start recording."
+            stop()
+        }
+    }
+
+    func stop(appendFinalBuffer: Bool = true) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            audioEngine.inputNode.removeTap(onBus: 0)
+        }
+        if appendFinalBuffer {
+            recognitionRequest?.endAudio()
+        }
+        recognitionTask?.cancel()
+        recognitionTask = nil
+        recognitionRequest = nil
+        isRecording = false
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+    }
+
+    private func requestPermissions() async -> Bool {
+        let speechAllowed = await withCheckedContinuation { continuation in
+            SFSpeechRecognizer.requestAuthorization { status in
+                continuation.resume(returning: status == .authorized)
+            }
+        }
+
+        let micAllowed = await withCheckedContinuation { continuation in
+            AVAudioSession.sharedInstance().requestRecordPermission { allowed in
+                continuation.resume(returning: allowed)
+            }
+        }
+
+        return speechAllowed && micAllowed
     }
 }

@@ -10,6 +10,7 @@ struct DashboardView: View {
     @Query(sort: \Hive.createdAt) private var hives: [Hive]
     @State private var showingNewInspection = false
     @State private var showingAddHive = false
+    @State private var showingSwarmAlertNetwork = false
     @State private var ai = AsyncAIViewModel()
 
     var body: some View {
@@ -43,6 +44,7 @@ struct DashboardView: View {
                         }
                         quickAction("Generate Report", "doc.richtext") {}
                         quickAction("Add Hive", "plus.hexagon") { showingAddHive = true }
+                        quickAction(localization.t(.swarmAlertNetwork), "antenna.radiowaves.left.and.right") { showingSwarmAlertNetwork = true }
                     }
                 }
 
@@ -83,6 +85,11 @@ struct DashboardView: View {
         }
         .sheet(isPresented: $showingNewInspection) {
             NewInspectionView()
+        }
+        .sheet(isPresented: $showingSwarmAlertNetwork) {
+            NavigationStack {
+                SwarmAlertNetworkView()
+            }
         }
         .task { seedIfNeeded() }
     }

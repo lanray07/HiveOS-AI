@@ -1,0 +1,4 @@
+reference_name,product_id,duration,price_gbp,display_name,description
+Premium Monthly,hiveosai.premium.monthly,1 Month,14.99,HiveOS AI Premium Monthly,"Unlock unlimited hives, AI hive scans, Hive Pulse, advanced analytics, PDF reports and weather intelligence placeholders."
+Premium Yearly,hiveosai.premium.yearly,1 Year,119.99,HiveOS AI Premium Yearly,"Annual access to unlimited hives, AI hive scans, Hive Pulse, advanced analytics, PDF reports and weather intelligence placeholders."
+Apiary Pro Monthly,hiveosai.apiarypro.monthly,1 Month,39.99,HiveOS AI Apiary Pro,"Commercial apiary tools with multi-apiary management, advanced reports, team collaboration placeholders, cloud backup placeholders and commercial analytics placeholders."

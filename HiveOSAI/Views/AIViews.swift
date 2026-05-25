@@ -12,10 +12,12 @@ struct IntelligenceHubView: View {
             Section("AI Modules") {
                 NavigationLink("AI Hive Scan") { AIHiveScanView(defaultHive: hives.first) }
                 NavigationLink("Hive Audio Intelligence") { HiveAudioIntelligenceView(defaultHive: hives.first) }
+                NavigationLink("Voice Input Notes") { VoiceInputDemoView() }
                 NavigationLink("Hive Pulse System") {
                     if let hive = hives.first { HivePulseSystemView(hive: hive) } else { MissingHiveView() }
                 }
                 NavigationLink("Weather Intelligence Placeholder") { WeatherIntelligenceView() }
+                NavigationLink(localization.t(.swarmAlertNetwork)) { SwarmAlertNetworkView() }
                 NavigationLink("Honey Production Placeholder") { HoneyProductionView() }
                 NavigationLink("Widgets Placeholder") { WidgetsPlaceholderView() }
                 NavigationLink("Apple Watch Placeholder") { WatchPlaceholderView() }
@@ -271,5 +273,25 @@ struct MissingHiveView: View {
         EmptyStateView(title: "No hive selected", message: "Add a hive before generating a pulse.", systemImage: "hexagon")
             .padding(16)
             .navigationTitle("Hive Pulse")
+    }
+}
+
+struct VoiceInputDemoView: View {
+    @State private var notes = ""
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                SectionPanel(title: "Voice Input") {
+                    TextField("Dictated hive notes", text: $notes, axis: .vertical)
+                    VoiceInputPanel(text: $notes, title: "Record Voice Input")
+                    Text("Speech recognition turns field observations into editable text. Verify dictated notes before making hive decisions.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(16)
+        }
+        .navigationTitle("Voice Input")
     }
 }

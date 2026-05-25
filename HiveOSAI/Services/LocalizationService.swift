@@ -60,6 +60,8 @@ enum L10nKey: String {
     case verifyDecisions
     case weatherIntelligence
     case upgradeBanner
+    case swarmAlertNetwork
+    case swarmAlertSubtitle
 }
 
 @Observable
@@ -134,7 +136,9 @@ private let translations: [AppLanguage: [L10nKey: String]] = [
         .recommendations: "Recommendations",
         .verifyDecisions: "Informational only. Independently verify all hive decisions.",
         .weatherIntelligence: "Weather Intelligence",
-        .upgradeBanner: "Unlock Hive Pulse, AI scans, reports, and advanced analytics."
+        .upgradeBanner: "Unlock Hive Pulse, AI scans, reports, and advanced analytics.",
+        .swarmAlertNetwork: "Swarm Alert Network",
+        .swarmAlertSubtitle: "Notify local beekeepers when a swarm is spotted."
     ],
     .spanish: [
         .dashboard: "Panel",
@@ -172,7 +176,9 @@ private let translations: [AppLanguage: [L10nKey: String]] = [
         .recommendations: "Recomendaciones",
         .verifyDecisions: "Solo informativo. Verifica de forma independiente todas las decisiones.",
         .weatherIntelligence: "Inteligencia meteorológica",
-        .upgradeBanner: "Desbloquea Hive Pulse, escaneos de IA, informes y analítica avanzada."
+        .upgradeBanner: "Desbloquea Hive Pulse, escaneos de IA, informes y analítica avanzada.",
+        .swarmAlertNetwork: "Red de alertas de enjambres",
+        .swarmAlertSubtitle: "Avisa a apicultores locales cuando se detecte un enjambre."
     ],
     .french: [
         .dashboard: "Tableau",
@@ -210,7 +216,9 @@ private let translations: [AppLanguage: [L10nKey: String]] = [
         .recommendations: "Recommandations",
         .verifyDecisions: "Informatif uniquement. Vérifiez indépendamment toutes les décisions.",
         .weatherIntelligence: "Intelligence météo",
-        .upgradeBanner: "Débloquez Hive Pulse, scans IA, rapports et analytique avancée."
+        .upgradeBanner: "Débloquez Hive Pulse, scans IA, rapports et analytique avancée.",
+        .swarmAlertNetwork: "Réseau d'alerte essaim",
+        .swarmAlertSubtitle: "Prévenez les apiculteurs locaux lorsqu'un essaim est repéré."
     ],
     .german: [
         .dashboard: "Dashboard",
@@ -248,7 +256,9 @@ private let translations: [AppLanguage: [L10nKey: String]] = [
         .recommendations: "Empfehlungen",
         .verifyDecisions: "Nur informativ. Prüfe alle Entscheidungen unabhängig.",
         .weatherIntelligence: "Wetterintelligenz",
-        .upgradeBanner: "Schalte Hive Pulse, KI-Scans, Berichte und erweiterte Analysen frei."
+        .upgradeBanner: "Schalte Hive Pulse, KI-Scans, Berichte und erweiterte Analysen frei.",
+        .swarmAlertNetwork: "Schwarm-Alarmnetzwerk",
+        .swarmAlertSubtitle: "Benachrichtige lokale Imker, wenn ein Schwarm gesichtet wird."
     ],
     .italian: [
         .dashboard: "Cruscotto",
@@ -286,7 +296,9 @@ private let translations: [AppLanguage: [L10nKey: String]] = [
         .recommendations: "Raccomandazioni",
         .verifyDecisions: "Solo informativo. Verifica in modo indipendente ogni decisione.",
         .weatherIntelligence: "Intelligence meteo",
-        .upgradeBanner: "Sblocca Hive Pulse, scansioni IA, report e analisi avanzate."
+        .upgradeBanner: "Sblocca Hive Pulse, scansioni IA, report e analisi avanzate.",
+        .swarmAlertNetwork: "Rete di allerta sciami",
+        .swarmAlertSubtitle: "Avvisa gli apicoltori locali quando viene avvistato uno sciame."
     ],
     .portuguese: [
         .dashboard: "Painel",
@@ -324,6 +336,8 @@ private let translations: [AppLanguage: [L10nKey: String]] = [
         .recommendations: "Recomendações",
         .verifyDecisions: "Apenas informativo. Verifica todas as decisões de forma independente.",
         .weatherIntelligence: "Inteligência meteorológica",
-        .upgradeBanner: "Desbloqueia Hive Pulse, scans de IA, relatórios e análises avançadas."
+        .upgradeBanner: "Desbloqueia Hive Pulse, scans de IA, relatórios e análises avançadas.",
+        .swarmAlertNetwork: "Rede de alerta de enxames",
+        .swarmAlertSubtitle: "Notifica apicultores locais quando um enxame é avistado."
     ]
 ]

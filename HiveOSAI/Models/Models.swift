@@ -56,6 +56,14 @@ enum HivePhotoCategory: String, CaseIterable, Identifiable, Codable {
     var id: String { rawValue }
 }
 
+enum SwarmSightingStatus: String, CaseIterable, Identifiable, Codable {
+    case spotted = "Spotted"
+    case notified = "Local Beekeepers Notified"
+    case claimed = "Claimed"
+    case resolved = "Resolved"
+    var id: String { rawValue }
+}
+
 @Model
 final class Apiary {
     var id: UUID
@@ -242,6 +250,58 @@ final class SubscriptionState {
         self.planRawValue = plan.rawValue
         self.isActive = isActive
         self.renewsAt = renewsAt
+    }
+}
+
+@Model
+final class SwarmSighting {
+    var id: UUID
+    var title: String
+    var locationDescription: String
+    var latitude: Double?
+    var longitude: Double?
+    var estimatedClusterSize: String
+    var heightDescription: String
+    var contactName: String
+    var contactMethod: String
+    var notes: String
+    var statusRawValue: String
+    var notifyLocalBeekeepers: Bool
+    var createdAt: Date
+
+    var status: SwarmSightingStatus {
+        get { SwarmSightingStatus(rawValue: statusRawValue) ?? .spotted }
+        set { statusRawValue = newValue.rawValue }
+    }
+
+    init(
+        id: UUID = UUID(),
+        title: String,
+        locationDescription: String,
+        latitude: Double? = nil,
+        longitude: Double? = nil,
+        estimatedClusterSize: String,
+        heightDescription: String,
+        contactName: String,
+        contactMethod: String,
+        notes: String = "",
+        status: SwarmSightingStatus = .spotted,
+        notifyLocalBeekeepers: Bool = true,
+        createdAt: Date = .now
+    ) {
+        self.id = id
+        self.title = title
+        self.locationDescription = locationDescription
+        self.latitude = latitude
+        self.longitude = longitude
+        self.estimatedClusterSize = estimatedClusterSize
+        self.heightDescription = heightDescription
+        self.contactName = contactName
+        self.contactMethod = contactMethod
+        self.notes = notes
+        self.statusRawValue = status.rawValue
+        self.notifyLocalBeekeepers = notifyLocalBeekeepers
+        self.createdAt = createdAt
     }
 }
 

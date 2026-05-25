@@ -110,6 +110,7 @@ struct SettingsView: View {
             Section(localization.t(.preferences)) {
                 Button("Notification Settings") { Task { await notifications.requestAuthorization() } }
                 NavigationLink("Apiary Preferences") { ApiaryManagementView() }
+                NavigationLink(localization.t(.swarmAlertNetwork)) { SwarmAlertNetworkView() }
                 NavigationLink("Widget Settings") { WidgetsPlaceholderView() }
                 NavigationLink("Apple Watch Placeholder Settings") { WatchPlaceholderView() }
             }
