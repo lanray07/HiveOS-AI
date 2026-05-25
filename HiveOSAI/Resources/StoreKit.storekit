@@ -1,0 +1,81 @@
+{
+  "identifier" : "HiveOSAI",
+  "nonRenewingSubscriptions" : [],
+  "products" : [],
+  "settings" : {
+    "_applicationInternalID" : "0",
+    "_developerTeamID" : "TEAMID",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 739065600,
+    "_locale" : "en_GB",
+    "_storefront" : "GBR"
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "group.hiveosai.membership",
+      "localizations" : [
+        {
+          "description" : "HiveOS AI Plans",
+          "displayName" : "HiveOS AI"
+        }
+      ],
+      "subscriptions" : [
+        {
+          "displayPrice" : "14.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "premium.monthly",
+          "localizations" : [
+            {
+              "description" : "Premium Monthly",
+              "displayName" : "Premium Monthly"
+            }
+          ],
+          "productID" : "hiveosai.premium.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "group.hiveosai.membership",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "displayPrice" : "119.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "premium.yearly",
+          "localizations" : [
+            {
+              "description" : "Premium Yearly",
+              "displayName" : "Premium Yearly"
+            }
+          ],
+          "productID" : "hiveosai.premium.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Yearly",
+          "subscriptionGroupID" : "group.hiveosai.membership",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "displayPrice" : "39.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "apiary.pro.monthly",
+          "localizations" : [
+            {
+              "description" : "Apiary Pro Monthly",
+              "displayName" : "Apiary Pro Monthly"
+            }
+          ],
+          "productID" : "hiveosai.apiarypro.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Apiary Pro Monthly",
+          "subscriptionGroupID" : "group.hiveosai.membership",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

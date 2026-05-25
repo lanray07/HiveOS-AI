@@ -1,0 +1,85 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000000000000000000000101 /* HiveOSAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* HiveOSAIApp.swift */; };
+		000000000000000000000102 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000002 /* Models.swift */; };
+		000000000000000000000103 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* AIService.swift */; };
+		000000000000000000000104 /* PlatformServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000004 /* PlatformServices.swift */; };
+		000000000000000000000105 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000005 /* AppViewModel.swift */; };
+		000000000000000000000106 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000006 /* Components.swift */; };
+		000000000000000000000107 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000007 /* ContentView.swift */; };
+		000000000000000000000108 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000008 /* DashboardView.swift */; };
+		000000000000000000000109 /* ManagementViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000009 /* ManagementViews.swift */; };
+		00000000000000000000010A /* AIViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000A /* AIViews.swift */; };
+		00000000000000000000010B /* AnalyticsReportsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000B /* AnalyticsReportsSettings.swift */; };
+		00000000000000000000010C /* PlaceholderViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000C /* PlaceholderViews.swift */; };
+		00000000000000000000010D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000D /* Assets.xcassets */; };
+		00000000000000000000010E /* StoreKit.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000000E /* StoreKit.storekit */; };
+		00000000000000000000010F /* LocalizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000010 /* LocalizationService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		000000000000000000000001 /* HiveOSAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveOSAIApp.swift; sourceTree = "<group>"; };
+		000000000000000000000002 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/Models.swift; sourceTree = "<group>"; };
+		000000000000000000000003 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/AIService.swift; sourceTree = "<group>"; };
+		000000000000000000000004 /* PlatformServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/PlatformServices.swift; sourceTree = "<group>"; };
+		000000000000000000000005 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels/AppViewModel.swift; sourceTree = "<group>"; };
+		000000000000000000000006 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components/Components.swift; sourceTree = "<group>"; };
+		000000000000000000000007 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/ContentView.swift; sourceTree = "<group>"; };
+		000000000000000000000008 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/DashboardView.swift; sourceTree = "<group>"; };
+		000000000000000000000009 /* ManagementViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/ManagementViews.swift; sourceTree = "<group>"; };
+		00000000000000000000000A /* AIViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/AIViews.swift; sourceTree = "<group>"; };
+		00000000000000000000000B /* AnalyticsReportsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/AnalyticsReportsSettings.swift; sourceTree = "<group>"; };
+		00000000000000000000000C /* PlaceholderViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/PlaceholderViews.swift; sourceTree = "<group>"; };
+		00000000000000000000000D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00000000000000000000000E /* StoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Resources/StoreKit.storekit; sourceTree = "<group>"; };
+		00000000000000000000000F /* HiveOSAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HiveOSAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000010 /* LocalizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/LocalizationService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000000000000000000201 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000000000000000000301 = {isa = PBXGroup; children = (000000000000000000000302, 000000000000000000000303); sourceTree = "<group>"; };
+		000000000000000000000302 /* HiveOSAI */ = {isa = PBXGroup; children = (000000000000000000000001, 000000000000000000000002, 000000000000000000000003, 000000000000000000000004, 000000000000000000000010, 000000000000000000000005, 000000000000000000000006, 000000000000000000000007, 000000000000000000000008, 000000000000000000000009, 00000000000000000000000A, 00000000000000000000000B, 00000000000000000000000C, 00000000000000000000000D, 00000000000000000000000E); path = HiveOSAI; sourceTree = "<group>"; };
+		000000000000000000000303 /* Products */ = {isa = PBXGroup; children = (00000000000000000000000F); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000000000000000000401 /* HiveOSAI */ = {isa = PBXNativeTarget; buildConfigurationList = 000000000000000000000701 /* Build configuration list for PBXNativeTarget "HiveOSAI" */; buildPhases = (000000000000000000000501, 000000000000000000000502, 000000000000000000000201); buildRules = (); dependencies = (); name = HiveOSAI; productName = HiveOSAI; productReference = 00000000000000000000000F /* HiveOSAI.app */; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000000000000000000601 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 1530; LastUpgradeCheck = 1530; TargetAttributes = {000000000000000000000401 = {CreatedOnToolsVersion = 15.3;};};}; buildConfigurationList = 000000000000000000000700 /* Build configuration list for PBXProject "HiveOSAI" */; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = 000000000000000000000301; productRefGroup = 000000000000000000000303; projectDirPath = ""; projectRoot = ""; targets = (000000000000000000000401); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000000000000000000000502 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (00000000000000000000010D, 00000000000000000000010E); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000000000000000000501 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (000000000000000000000101, 000000000000000000000102, 000000000000000000000103, 000000000000000000000104, 00000000000000000000010F, 000000000000000000000105, 000000000000000000000106, 000000000000000000000107, 000000000000000000000108, 000000000000000000000109, 00000000000000000000010A, 00000000000000000000010B, 00000000000000000000010C); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		000000000000000000000801 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = "HiveOS AI"; INFOPLIST_KEY_NSCameraUsageDescription = "HiveOS AI uses the camera to add hive, brood frame, comb, and entrance photos for informational analysis."; INFOPLIST_KEY_NSMicrophoneUsageDescription = "HiveOS AI uses the microphone for hive audio intelligence placeholders."; INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "HiveOS AI uses your photo library to upload hive inspection images."; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.hiveosai.app; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Debug; };
+		000000000000000000000802 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = "HiveOS AI"; INFOPLIST_KEY_NSCameraUsageDescription = "HiveOS AI uses the camera to add hive, brood frame, comb, and entrance photos for informational analysis."; INFOPLIST_KEY_NSMicrophoneUsageDescription = "HiveOS AI uses the microphone for hive audio intelligence placeholders."; INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "HiveOS AI uses your photo library to upload hive inspection images."; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.hiveosai.app; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2"; VALIDATE_PRODUCT = YES; }; name = Release; };
+		000000000000000000000803 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ANALYZER_NONNULL = YES; CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE; CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; CLANG_ENABLE_OBJC_WEAK = YES; CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES; CLANG_WARN_BOOL_CONVERSION = YES; CLANG_WARN_COMMA = YES; CLANG_WARN_CONSTANT_CONVERSION = YES; CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES; CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR; CLANG_WARN_DOCUMENTATION_COMMENTS = YES; CLANG_WARN_EMPTY_BODY = YES; CLANG_WARN_ENUM_CONVERSION = YES; CLANG_WARN_INFINITE_RECURSION = YES; CLANG_WARN_INT_CONVERSION = YES; CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES; CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES; CLANG_WARN_OBJC_LITERAL_CONVERSION = YES; CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR; CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES; CLANG_WARN_RANGE_LOOP_ANALYSIS = YES; CLANG_WARN_STRICT_PROTOTYPES = YES; CLANG_WARN_SUSPICIOUS_MOVE = YES; CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE; CLANG_WARN_UNREACHABLE_CODE = YES; CLANG_WARN__DUPLICATE_METHOD_MATCH = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_STRICT_OBJC_MSGSEND = YES; ENABLE_TESTABILITY = YES; GCC_C_LANGUAGE_STANDARD = gnu17; GCC_DYNAMIC_NO_PIC = NO; GCC_NO_COMMON_BLOCKS = YES; GCC_OPTIMIZATION_LEVEL = 0; GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)"); GCC_WARN_64_TO_32_BIT_CONVERSION = YES; GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR; GCC_WARN_UNDECLARED_SELECTOR = YES; GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE; GCC_WARN_UNUSED_FUNCTION = YES; GCC_WARN_UNUSED_VARIABLE = YES; MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE; MTL_FAST_MATH = YES; ONLY_ACTIVE_ARCH = YES; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; }; name = Debug; };
+		000000000000000000000804 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ANALYZER_NONNULL = YES; CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE; CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; CLANG_ENABLE_OBJC_WEAK = YES; CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES; CLANG_WARN_BOOL_CONVERSION = YES; CLANG_WARN_COMMA = YES; CLANG_WARN_CONSTANT_CONVERSION = YES; CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES; CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR; CLANG_WARN_DOCUMENTATION_COMMENTS = YES; CLANG_WARN_EMPTY_BODY = YES; CLANG_WARN_ENUM_CONVERSION = YES; CLANG_WARN_INFINITE_RECURSION = YES; CLANG_WARN_INT_CONVERSION = YES; CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES; CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES; CLANG_WARN_OBJC_LITERAL_CONVERSION = YES; CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR; CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES; CLANG_WARN_RANGE_LOOP_ANALYSIS = YES; CLANG_WARN_STRICT_PROTOTYPES = YES; CLANG_WARN_SUSPICIOUS_MOVE = YES; CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE; CLANG_WARN_UNREACHABLE_CODE = YES; CLANG_WARN__DUPLICATE_METHOD_MATCH = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; ENABLE_NS_ASSERTIONS = NO; ENABLE_STRICT_OBJC_MSGSEND = YES; GCC_C_LANGUAGE_STANDARD = gnu17; GCC_NO_COMMON_BLOCKS = YES; GCC_WARN_64_TO_32_BIT_CONVERSION = YES; GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR; GCC_WARN_UNDECLARED_SELECTOR = YES; GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE; GCC_WARN_UNUSED_FUNCTION = YES; GCC_WARN_UNUSED_VARIABLE = YES; MTL_ENABLE_DEBUG_INFO = NO; MTL_FAST_MATH = YES; SWIFT_COMPILATION_MODE = wholemodule; VALIDATE_PRODUCT = YES; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000000000000000000000700 /* Build configuration list for PBXProject "HiveOSAI" */ = {isa = XCConfigurationList; buildConfigurations = (000000000000000000000803, 000000000000000000000804); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		000000000000000000000701 /* Build configuration list for PBXNativeTarget "HiveOSAI" */ = {isa = XCConfigurationList; buildConfigurations = (000000000000000000000801, 000000000000000000000802); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 000000000000000000000601 /* Project object */;
+}
