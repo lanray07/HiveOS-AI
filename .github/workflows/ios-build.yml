@@ -26,7 +26,7 @@ env:
 jobs:
   simulator-build:
     name: Compile iOS App
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -52,7 +52,7 @@ jobs:
 
   app-store-upload:
     name: Archive and Upload
-    runs-on: macos-15
+    runs-on: macos-26
     if: github.event_name == 'workflow_dispatch' && inputs.upload_to_app_store == true
     steps:
       - name: Checkout
