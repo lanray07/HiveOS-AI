@@ -69,6 +69,40 @@ In Organizer:
 
 Command-line export/upload can also use `Tools/ExportOptions-AppStore.plist` after signing is configured.
 
+## GitHub Actions Build
+
+The repository includes `.github/workflows/ios-build.yml`.
+
+On every push to `main`, GitHub Actions runs a simulator compile on a macOS runner.
+
+For App Store Connect upload through GitHub:
+
+1. Go to **GitHub > Repository > Settings > Secrets and variables > Actions**
+2. Add these repository secrets:
+
+```text
+APPLE_TEAM_ID
+ASC_KEY_ID
+ASC_ISSUER_ID
+ASC_API_KEY_BASE64
+```
+
+`ASC_API_KEY_BASE64` is the App Store Connect `.p8` API key encoded as base64.
+
+On macOS:
+
+```sh
+base64 -i AuthKey_XXXXXXXXXX.p8
+```
+
+On Windows PowerShell:
+
+```powershell
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("AuthKey_XXXXXXXXXX.p8"))
+```
+
+Then run **Actions > iOS Build > Run workflow**, enable **Archive and upload to App Store Connect**, and optionally enter a build number.
+
 ## 6. App Store Connect
 
 After processing finishes:
