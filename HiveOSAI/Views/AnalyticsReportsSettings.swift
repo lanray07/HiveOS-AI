@@ -135,8 +135,11 @@ struct SettingsView: View {
 
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     @Environment(StoreKitService.self) private var store
     @Environment(LocalizationService.self) private var localization
+    private let privacyURL = URL(string: "https://github.com/lanray07/HiveOS-AI/blob/main/PRIVACY_POLICY.md")!
+    private let termsURL = URL(string: "https://github.com/lanray07/HiveOS-AI/blob/main/TERMS_OF_USE.md")!
 
     var body: some View {
         NavigationStack {
@@ -155,12 +158,22 @@ struct PaywallView: View {
                             .foregroundStyle(.secondary)
                     } else {
                         ForEach(store.products) { product in
-                            Button(product.displayName + " " + product.displayPrice) {
-                                Task { await store.purchase(product) }
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .tint(.orange)
+                            subscriptionProductButton(product)
                         }
+                    }
+                    Button {
+                        Task { await store.restorePurchases() }
+                    } label: {
+                        Label("Restore Purchases", systemImage: "arrow.clockwise")
+                            .frame(maxWidth: .infinity)
+                    }
+                    .buttonStyle(.bordered)
+                    .tint(.orange)
+                    legalLinks
+                    if let error = store.errorMessage {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundStyle(.red)
                     }
                 }
                 .padding(16)
@@ -169,6 +182,43 @@ struct PaywallView: View {
             .toolbar { Button("Done") { dismiss() } }
             .task { await store.loadProducts() }
         }
+    }
+
+    private func subscriptionProductButton(_ product: Product) -> some View {
+        Button {
+            Task { await store.purchase(product) }
+        } label: {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(product.displayName)
+                    .font(.headline)
+                Text(subscriptionDetail(for: product))
+                    .font(.subheadline)
+                Text("Renews automatically until cancelled. Manage or cancel in your Apple ID subscriptions.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(.orange)
+    }
+
+    private func subscriptionDetail(for product: Product) -> String {
+        if let period = product.subscription?.subscriptionPeriod {
+            return "\(product.displayPrice) per \(period.unit.localizedName)"
+        }
+        return product.displayPrice
+    }
+
+    private var legalLinks: some View {
+        HStack(spacing: 12) {
+            Button("Privacy Policy") { openURL(privacyURL) }
+            Text("•").foregroundStyle(.secondary)
+            Button("Terms of Use") { openURL(termsURL) }
+        }
+        .font(.footnote)
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding(.top, 4)
     }
 
     private func plan(_ name: String, price: String, features: [String]) -> some View {
@@ -191,6 +241,18 @@ struct LegalTextView: View {
                 .padding(16)
         }
         .navigationTitle(title)
+    }
+}
+
+private extension Product.SubscriptionPeriod.Unit {
+    var localizedName: String {
+        switch self {
+        case .day: "day"
+        case .week: "week"
+        case .month: "month"
+        case .year: "year"
+        @unknown default: "period"
+        }
     }
 }
 

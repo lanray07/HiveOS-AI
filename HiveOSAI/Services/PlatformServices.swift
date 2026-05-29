@@ -44,6 +44,15 @@ final class StoreKitService {
         }
     }
 
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+            await refreshEntitlements()
+        } catch {
+            errorMessage = "Purchases could not be restored."
+        }
+    }
+
     func refreshEntitlements() async {
         for await result in Transaction.currentEntitlements {
             if case .verified(let transaction) = result {
