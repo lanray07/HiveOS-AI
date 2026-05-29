@@ -1,6 +1,7 @@
 import Charts
 import SwiftData
 import SwiftUI
+import StoreKit
 
 struct AnalyticsDashboardView: View {
     @Query(sort: \Hive.createdAt) private var hives: [Hive]
