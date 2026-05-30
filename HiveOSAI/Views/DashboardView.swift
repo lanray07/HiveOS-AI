@@ -10,7 +10,11 @@ struct DashboardView: View {
     @Query(sort: \Hive.createdAt) private var hives: [Hive]
     @State private var showingNewInspection = false
     @State private var showingAddHive = false
+    @State private var showingHiveScan = false
+    @State private var showingHiveAudio = false
     @State private var showingSwarmAlertNetwork = false
+    @State private var shareURL: URL?
+    @State private var reportError: String?
     @State private var ai = AsyncAIViewModel()
 
     var body: some View {
@@ -37,12 +41,12 @@ struct DashboardView: View {
                 SectionPanel(title: localization.t(.quickActions)) {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 148), spacing: 10)], spacing: 10) {
                         quickAction("New Inspection", "checklist.checked") { showingNewInspection = true }
-                        quickAction("Scan Hive", "camera.viewfinder") {}
-                        quickAction("Record Hive Audio", "waveform") {}
+                        quickAction("Scan Hive", "camera.viewfinder") { showingHiveScan = true }
+                        quickAction("Record Hive Audio", "waveform") { showingHiveAudio = true }
                         quickAction("View Hive Pulse", "dot.radiowaves.left.and.right") {
                             Task { await runPulse() }
                         }
-                        quickAction("Generate Report", "doc.richtext") {}
+                        quickAction("Generate Report", "doc.richtext") { generateDashboardReport() }
                         quickAction("Add Hive", "plus.hexagon") { showingAddHive = true }
                         quickAction(localization.t(.swarmAlertNetwork), "antenna.radiowaves.left.and.right") { showingSwarmAlertNetwork = true }
                     }
@@ -86,10 +90,27 @@ struct DashboardView: View {
         .sheet(isPresented: $showingNewInspection) {
             NewInspectionView()
         }
+        .sheet(isPresented: $showingHiveScan) {
+            AIHiveScanView(defaultHive: hives.first)
+        }
+        .sheet(isPresented: $showingHiveAudio) {
+            HiveAudioIntelligenceView(defaultHive: hives.first)
+        }
         .sheet(isPresented: $showingSwarmAlertNetwork) {
             NavigationStack {
                 SwarmAlertNetworkView()
             }
+        }
+        .sheet(item: $shareURL) { url in
+            ShareSheet(items: [url])
+        }
+        .alert("Report unavailable", isPresented: Binding(
+            get: { reportError != nil },
+            set: { if !$0 { reportError = nil } }
+        )) {
+            Button("OK", role: .cancel) { reportError = nil }
+        } message: {
+            Text(reportError ?? "Try again after adding hive details.")
         }
         .task { seedIfNeeded() }
     }
@@ -132,6 +153,14 @@ struct DashboardView: View {
     private func runPulse() async {
         guard let hive = hives.first else { return }
         await ai.run { try await aiService.generateHivePulse(hive: hive) }
+    }
+
+    private func generateDashboardReport() {
+        do {
+            shareURL = try PDFReportService.makeReport(hive: hives.first, apiary: apiaries.first, reportType: "Hive Health Summary")
+        } catch {
+            reportError = "HiveOS AI could not generate a local PDF report. Please try again."
+        }
     }
 
     private func seedIfNeeded() {
